@@ -13,6 +13,8 @@ services:
       - .:/code
     depends_on:
       - db_postgres
+    environment:
+      VIRTUAL_HOST: jonathanvazquez.tk
 
   nginx:
     image: nginx:1.13
@@ -23,6 +25,17 @@ services:
       - static:/code/static
     depends_on:
       - django_app
+
+nginx-proxy:
+  image: jwilder/nginx-proxy
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+  restart: always
+  privileged: true
+
 volumes:
   .:
   postgres_data:
