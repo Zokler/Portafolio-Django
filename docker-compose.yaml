@@ -24,7 +24,7 @@ services:
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static:/code/static
-      - media:/code/media
+      - media:/code/webpersonal/media
     depends_on:
       - django_app
 
