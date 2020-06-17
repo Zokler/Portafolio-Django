@@ -10,6 +10,7 @@ services:
     build: .
     volumes:
       - static:/code/static
+      - media:/code/media
       - .:/code
     depends_on:
       - db_postgres
@@ -23,6 +24,7 @@ services:
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static:/code/static
+      - media:/code/media
     depends_on:
       - django_app
       
